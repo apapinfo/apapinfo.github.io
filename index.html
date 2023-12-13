@@ -21,7 +21,7 @@
             <div class="text-box">
                 <h1> Alexandre Pap </h1>
                 <p> Etudiant en Informatique <br> (C++ / Python / SQL / Javascript / HTML / CSS) </p>
-                <a href="https://github.com/apapinfo/Projects" class="bouton"> Page GitHub </a>
+                <a href="https://github.com/apapinfo" class="bouton"> Page GitHub </a>
             </div>
           </div>
           <div class="Competences" id="1">
@@ -38,7 +38,7 @@
           </div>
           <hr>
           <div class="Projets" id="2">
-            <h1> Projets réalisés </h1>
+            <h1> Aperçu De Projets </h1>
             <div class="ligne">
                 <h1> 2023 - 2024 </h1>
                 <div class="colonne">
@@ -48,17 +48,24 @@
                         <div id="game-container">
                             <div id="game-board"></div>
                             <button onclick="toggleGame()"> Start / Stop </button>
+                            <br>
+                            <button id="btnLeft"> Left </button>
+                            <button id="btnUp"> Up </button>
+                            <button id="btnRight"> Right </button>
+                            <button id="btnDown"> Down </button>
                         </div>
                     </div>
                     <div class="Projets-col">
                         <h3> Application "Les Baladins Du Gröenberg" </h3>
                         <p> Programmé en HTML / CSS / Javascript en utilisant le framework VueJS, l'application est une application de gestion de costumes pour l'association "Les Baladins Du Gröenberg" à Bergues </p>
-                        <img src="/img/Baladins.png">
+                        <img src="../Site/img/Baladins.png">
+                        <a href="https://github.com/apapinfo/Projects" class="bouton"> Voir Le Projet </a>
                     </div>
                     <div class="Projets-col">
                         <h3> Jeu Vidéo "MuseumVR" </h3>
                         <p> Programmé en CSharp en utilisant le moteur de jeu Unity, "MuseumVR" est un serious game en VR destiné aux collégiens pour apprendre l'Histoire </p>
-                        <img src="/img/MuseumVR.png">
+                        <img src="../Site/img/MuseumVR.png">
+                        <a href="https://github.com/apapinfo/Projects" class="bouton"> Voir Le Projet </a>
                     </div>
                 </div>
             </div>
@@ -68,17 +75,20 @@
                     <div class="Projets-col">
                         <h3> Logiciel d'Astrophotographie "FitStacker" </h3>
                         <p> Programmé en Python, le logiciel utilise la méthode du stacking pour empiler des images FITS pour obtenir des images de qualité supérieure </p>
-                        <img src="/img/FitStacker.jpg">
+                        <img src="../Site/img/FitStacker.jpg">
+                        <a href="https://github.com/apapinfo/Projects" class="bouton"> Voir Le Projet </a>
                     </div>
                     <div class="Projets-col">
                         <h3> Site Vitrine "Panier Sympa" </h3>
                         <p> Programmé en HTML / CSS / Javascript, le site vitrine présente l'EIRL "Panier Sympa", basée à Uxem (Calais) </p>
-                        <img src="/img/PanierSympa.png">
+                        <img src="../Site/img/PanierSympa.png">
+                        <a href="https://uxempaniersympa.000webhostapp.com/" class="bouton"> Voir Le Site </a>
                     </div>
                     <div class="Projets-col">
                         <h3> Jeu Vidéo "Labyrinthe" </h3>
                         <p> Programmé en Java en utilisant le framework JavaFX, "Labyrinthe" est un jeu vidéo inspiré du célèbre jeu de société "Labyrinthe" </p>
-                        <img src="/img/Labyrinthe.jpg">
+                        <img src="../Site/img/Labyrinthe.jpg">
+                        <a href="https://github.com/apapinfo/Projects" class="bouton"> Voir Le Projet </a>
                     </div>
                 </div>
             </div>
@@ -88,17 +98,20 @@
                     <div class="Projets-col">
                         <h3> Maquettage Web </h3>
                         <p> Exemple de maquettage d'un site Web réalisé sous le logiciel Inkscape </p>
-                        <img src="/img/Maquette.png">
+                        <img src="../Site/img/Maquette.png">
+                        <a href="https://github.com/apapinfo/Projects" class="bouton"> Voir Le Projet </a>
                     </div>
                     <div class="Projets-col">
                         <h3> Rapport d'aide à la décision </h3>
                         <p> Rédaction d'un rapport d'aide à la décision contenant une étude de faisabilité pour l'investissement dans l'industrie cinématographique en 2021 </p>
-                        <img src="/img/RapportAideALaDecision.png">
+                        <img src="../Site/img/RapportAideALaDecision.png">
+                        <a href="https://github.com/apapinfo/Projects" class="bouton"> Voir Le Projet </a>
                     </div>
                     <div class="Projets-col">
                         <h3> Calendrier Perpétuel </h3>
                         <p> Programmé en Python, le calendrier perpétuel affiche les dates suivant le format de date, le mois et l'année entrés </p>
-                        <img src="/img/CalendrierPerpetuel.jpg">
+                        <img src="../Site/img/CalendrierPerpetuel.jpg">
+                        <a href="https://github.com/apapinfo/Projects" class="bouton"> Voir Le Projet </a>
                     </div>
                 </div>
             </div>
@@ -132,7 +145,7 @@
         .Accueil{
             min-height: 100vh;
             width: 100%;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)), url('/img/banniere.jpg');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)), url('../Site/img/banniere.jpg');
             background-position: center;
             background-size: cover;
             position: relative;
@@ -214,35 +227,6 @@
             border: 1px solid rgba(255, 0, 0, 0.7);
             background: rgba(255, 0, 0, 0.7);
             transition: 1s;
-        }
-        
-        @media(max-width : 900px) {
-            .text-box h1{
-                font-size: 30px;
-            }
-        
-            .nav-links{
-                position: relative;
-                color: rgba(255, 255, 255, 0.7);
-            }
-        
-            .nav-links ul li{
-                display: block;
-                padding-top: 30px;
-            }
-        
-            .nav-links ul li::after{
-                width: 0%;
-                transition: 0.5s;
-            }
-        
-            .nav-links ul li:hover::after{
-                width: 100%;
-            }
-
-            #game-board{
-                padding-left: 20%;
-            }
         }
         
         /* Compétences */
@@ -341,23 +325,56 @@
             width: 80%;
             height: 40%;
         }
-        
-        @media(max-width: 1300px) {
-            .colonne{
-                flex-direction: column;
-            }
-        
-            .Projets-col img{
-                padding-top: 20px;
-                padding-bottom: 60px;
-                margin-bottom: 20px;
-                width: 150px;
-                height: 150px;
-            }
 
-            #game-board{
-                padding-left: 20%;
-            }
+        .Projets-col a{
+            margin-top: 20px;
+        }
+
+        /* Jeu Web "Snake" */
+
+        #game-container button{
+            display: inline-block;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            padding: 12px 34px;
+            font-size: 13px;
+            background: transparent;
+            position: relative;
+            cursor: pointer;
+        }
+
+        #game-container button:hover{
+            border: 1px solid rgba(255, 0, 0, 0.7);
+            background: rgba(255, 0, 0, 0.7);
+            transition: 1s;
+        }
+
+        #game-board{
+            display: grid;
+            grid-template-columns: repeat(20, 15px);
+            gap: 1px;
+            margin-bottom: 20px;
+            margin: 0 5% 5% 5%;
+        }
+
+        .cell{
+            width: 15px;
+            height: 15px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        #snake-head{
+            background-color: green;
+        }
+
+        .snake-body{
+            background-color: darkgreen;
+        }
+
+        #food{
+            background-color: red;
         }
         
         /* Contact */
@@ -414,51 +431,55 @@
             padding: 30px;
         }
 
-        /* Jeu Web "Snake" */
+        /* Mode Responsive */
+        
+        @media(max-width : 900px) {
+            .text-box h1{
+                font-size: 30px;
+            }
+        
+            .nav-links{
+                position: relative;
+                color: rgba(255, 255, 255, 0.7);
+            }
+        
+            .nav-links ul li{
+                display: block;
+                padding-top: 30px;
+            }
+        
+            .nav-links ul li::after{
+                width: 0%;
+                transition: 0.5s;
+            }
+        
+            .nav-links ul li:hover::after{
+                width: 100%;
+            }
 
-        #game-container button{
-            display: inline-block;
-            text-decoration: none;
-            color: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            padding: 12px 34px;
-            font-size: 13px;
-            background: transparent;
-            position: relative;
-            cursor: pointer;
+            .Projets-col a{
+                margin: 0 20% 5% 20%;
+                display: block;
+            }
         }
 
-        #game-container button:hover{
-            border: 1px solid rgba(255, 0, 0, 0.7);
-            background: rgba(255, 0, 0, 0.7);
-            transition: 1s;
-        }
+        @media(max-width: 1300px) {
+            .colonne{
+                flex-direction: column;
+            }
+        
+            .Projets-col img{
+                padding-top: 20px;
+                padding-bottom: 60px;
+                margin-bottom: 20px;
+                width: 150px;
+                height: 150px;
+            }
 
-        #game-board{
-            display: grid;
-            grid-template-columns: repeat(20, 15px);
-            gap: 1px;
-            margin-bottom: 20px;
-            margin-left: 20px;
-        }
-
-        .cell{
-            width: 15px;
-            height: 15px;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        }
-
-        #snake-head{
-            background-color: green;
-        }
-
-        .snake-body{
-            background-color: darkgreen;
-        }
-
-        #food{
-            background-color: red;
+            .Projets-col a{
+                margin: 0 20% 5% 20%;
+                display: block;
+            }
         }
     </style>
     <script>
@@ -580,6 +601,10 @@
                     startGame();
                 }
             };
+
+            function setDirection(newDirection) {
+                direction = newDirection;
+            }
     
             document.addEventListener('keydown', (event) => {
                 switch (event.key) {
@@ -596,6 +621,22 @@
                         direction = 'right';
                         break;
                 }
+            });
+
+            document.getElementById('btnUp').addEventListener('click', () => {
+                setDirection('up');
+            });
+            
+            document.getElementById('btnDown').addEventListener('click', () => {
+                setDirection('down');
+            });
+            
+            document.getElementById('btnLeft').addEventListener('click', () => {
+                setDirection('left');
+            });
+            
+            document.getElementById('btnRight').addEventListener('click', () => {
+                setDirection('right');
             });
     
             drawBoard();
