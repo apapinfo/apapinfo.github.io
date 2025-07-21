@@ -1,0 +1,2292 @@
+:root {
+
+    --translating-factor: -350%;
+}
+
+
+
+
+
+
+
+
+/*
+
+Global Architecture
+
+*/
+
+
+
+
+
+
+
+
+html {
+
+    font-size: 16px;
+}
+
+html, body {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#background {
+
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #ede5e0;
+    overflow: hidden;
+    z-index: 0;
+}
+
+#background::after {
+
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("./Assets/Background.png");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    animation: background-after-animation 1s linear forwards;
+    animation-delay: 10s;
+    z-index: 0;
+}
+
+@keyframes background-after-animation {
+
+    to {
+
+        opacity: 1;
+    }
+}
+
+#footer {
+
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 8%;
+    bottom: -5%;
+    left: 0%;
+    margin: 0;
+    padding: 0;
+    border-top: 0.5px solid #4e4640;
+    background-color: #ede5e0;
+    z-index: 0;
+}
+
+#legal-notices-background {
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 4rem;
+    gap: 1rem;
+    background-color: #ede5e0;
+    overflow: auto;
+    z-index: 0;
+}
+
+#legal-notices {
+
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 8%;
+    height: 50%;
+    top: 30%;
+    left: 2%;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    border: 1px solid #4e4640;
+    cursor: pointer;
+    color: #4e4640;
+    z-index: 4;
+}
+
+#legal-notices:hover {
+
+    background: linear-gradient(45deg, #4e4640, #746c66);
+    color: #ede5e0;
+}
+
+#dynamic-background {
+
+    position: absolute;
+    width: 8192px;
+    height: 4320px;
+    top: 0;
+    left: 0;
+    transform-origin: top left;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    z-index: 1;
+}
+
+#background-svg {
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+#static-background {
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 2;
+}
+
+
+
+
+
+
+
+
+/*
+
+Animation Page 1
+
+*/
+
+
+
+
+
+
+
+
+.animated-point {
+
+    position: absolute;
+    width: 0.3rem;
+    height: 0.3rem;
+    top: 0rem;
+    left: 0rem;
+    margin: 0rem;
+    padding: 0rem;
+    background-color: #4e4640;
+    z-index: 1;
+}
+
+.animated-point-animation-beginning {
+
+    animation: animated-point-animation-beginning 0.3s linear forwards;
+}
+
+.animated-point-animation-ending {
+
+    animation: animated-point-animation-ending 0.5s linear forwards;
+}
+
+@keyframes animated-point-animation-beginning {
+
+    from {
+
+        opacity: 0;
+    }
+    to {
+
+        opacity: 1;
+    }
+}
+
+@keyframes animated-point-animation-ending {
+
+    from {
+
+        opacity: 1;
+    }
+    to {
+
+        opacity: 0;
+    }
+}
+
+.animated-pencil {
+
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    top: 0rem;
+    left: 0rem;
+    margin: 0rem;
+    padding: 0rem;
+    background-image: url("./Assets/Pencil.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.animated-pencil-animation-beginning {
+
+    animation: animated-pencil-animation-beginning 0.5s linear forwards;
+}
+
+.animated-pencil-animation-ending {
+
+    animation: animated-pencil-animation-ending 0.5s linear forwards;
+}
+
+@keyframes animated-pencil-animation-beginning {
+
+    from {
+
+        opacity: 0;
+    }
+    to {
+
+        opacity: 1;
+    }
+}
+
+@keyframes animated-pencil-animation-ending {
+
+    from {
+
+        opacity: 1;
+    }
+    to {
+
+        opacity: 0;
+    }
+}
+
+.animated-poof-beginning {
+
+    position: absolute;
+    width: 9rem;
+    height: 9rem;
+    top: 0rem;
+    left: 0rem;
+    margin: 0rem;
+    padding: 0rem;
+    background-image: url("./Assets/Poof.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.animated-poof-beginning-animation-beginning {
+
+    animation: animated-poof-beginning-animation-beginning 0.5s linear forwards;
+}
+
+.animated-poof-beginning-animation-ending {
+
+    animation: animated-poof-beginning-animation-ending 0.5s linear forwards;
+}
+
+@keyframes animated-poof-beginning-animation-beginning {
+
+    0% {
+
+        opacity: 0;
+    }
+    50% {
+
+        opacity: 1;
+    }
+    100% {
+
+        opacity: 0;
+    }
+}
+
+@keyframes animated-poof-beginning-animation-ending {
+
+    from {
+
+        opacity: 0;
+    }
+    to {
+
+        opacity: 0;
+    }
+}
+
+.animated-poof-ending {
+
+    position: absolute;
+    width: 9rem;
+    height: 9rem;
+    top: 0rem;
+    left: 0rem;
+    margin: 0rem;
+    padding: 0rem;
+    background-image: url("./Assets/Poof.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.animated-poof-ending-animation-beginning {
+
+    animation: animated-poof-ending-animation-beginning 0.5s linear forwards;
+    animation-delay: 2.5s;
+}
+
+.animated-poof-ending-animation-ending {
+
+    animation: animated-poof-ending-animation-ending 0.5s linear forwards;
+    animation-delay: 2.5s;
+}
+
+@keyframes animated-poof-ending-animation-beginning {
+
+    0% {
+
+        opacity: 0;
+    }
+    50% {
+
+        opacity: 1;
+    }
+    100% {
+
+        opacity: 0;
+    }
+}
+
+@keyframes animated-poof-ending-animation-ending {
+
+    from {
+
+        opacity: 0;
+    }
+    to {
+
+        opacity: 0;
+    }
+}
+
+
+
+
+
+
+
+
+/*
+
+Animation Page 2
+
+*/
+
+
+
+
+
+
+
+
+.animated-cursor {
+
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    top: 0rem;
+    left: 0rem;
+    margin: 0rem;
+    padding: 0rem;
+    background-image: url("./Assets/Cursor.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 2;
+}
+
+.animated-cursor-animation-beginning {
+
+    animation: animated-cursor-animation-beginning 1s linear forwards;
+}
+
+.animated-cursor-animation-ending {
+
+    animation: animated-cursor-animation-ending 0.3s linear forwards;
+}
+
+@keyframes animated-cursor-animation-beginning {
+
+    from {
+
+        opacity: 1;
+    }
+    to {
+
+        opacity: 1;
+    }
+}
+
+@keyframes animated-cursor-animation-ending {
+
+    0% {
+
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+
+        transform: scale(0.8);
+    }
+    100% {
+
+        transform: scale(1.3);
+    }
+}
+
+.animated-context-menu {
+
+    position: absolute;
+    width: 19rem;
+    height: 19rem;
+    top: 0rem;
+    left: 0rem;
+    margin: 0rem;
+    padding: 0rem;
+    background-image: url("./Assets/Context\ Menu.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.animated-context-menu-animation-beginning {
+
+    animation: animated-context-menu-animation-beginning 1s linear forwards;
+}
+
+.animated-context-menu-animation-ending {
+
+    animation: animated-context-menu-animation-ending 1s linear forwards;
+}
+
+@keyframes animated-context-menu-animation-beginning {
+
+    from {
+
+        opacity: 0;
+    }
+    to {
+
+        opacity: 0;
+    }
+}
+
+@keyframes animated-context-menu-animation-ending {
+
+    0% {
+
+        opacity: 1;
+    }
+    99% {
+
+        opacity: 1;
+    }
+    100% {
+
+        opacity: 0.;
+    }
+}
+
+
+
+
+
+
+
+
+/*
+
+Animation Page 3
+
+*/
+
+
+
+
+
+
+
+
+.animated-leaf {
+
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    top: 0rem;
+    left: 0rem;
+    margin: 0rem;
+    padding: 0rem;
+    background-image: url("./Assets/Leaf.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.animated-leaf-animation-beginning {
+
+    animation: animated-leaf-animation-beginning 1s linear forwards;
+}
+
+.animated-leaf-animation-ending {
+
+    animation: animated-leaf-animation-ending 1s linear forwards;
+}
+
+@keyframes animated-leaf-animation-beginning {
+
+    from {
+
+        opacity: 0;
+    }
+    to {
+
+        opacity: 1;
+    }
+}
+
+@keyframes animated-leaf-animation-ending {
+
+    from {
+
+        opacity: 1;
+    }
+    to {
+
+        opacity: 0;
+    }
+}
+
+
+
+
+
+
+
+
+/*
+
+Animation Page 3 Effect Class
+
+*/
+
+
+
+
+
+
+
+
+.animation-page-3-effect-class-deactivated {
+
+    display: none;
+}
+
+.animation-page-3-effect-class-activated {
+
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 2;
+}
+
+#animated-border-top-left-x {
+
+    position: absolute;
+    width: 1rem;
+    height: 0.5rem;
+    top: 3rem;
+    left: 1rem;
+    margin: 0;
+    padding: 0;
+    background-color: #4e4640;
+    transform-origin: left;
+    animation: animated-border-top-left-x-animation 0.5s linear forwards;
+    z-index: 2;
+}
+
+@keyframes animated-border-top-left-x-animation {
+
+    from {
+
+        transform: scaleX(0);
+    }
+    to {
+
+        transform: scaleX(4);
+    }
+}
+
+#animated-border-top-left-y {
+
+    position: absolute;
+    width: 0.5rem;
+    height: 1rem;
+    top: 3rem;
+    left: 1rem;
+    margin: 0;
+    padding: 0;
+    background-color: #4e4640;
+    transform-origin: top;
+    animation: animated-border-top-left-y-animation 0.5s linear forwards;
+    z-index: 2;
+}
+
+@keyframes animated-border-top-left-y-animation {
+
+    from {
+
+        transform: scaleY(0);
+    }
+    to {
+
+        transform: scaleY(4);
+    }
+}
+
+#animated-border-top-left-square {
+
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    top: 3rem;
+    left: 1rem;
+    margin: 0;
+    padding: 0;
+    background-color: #4e4640;
+    transform-origin: top left;
+    animation: animated-border-top-left-square-animation 0.5s linear forwards;
+    z-index: 2;
+}
+
+@keyframes animated-border-top-left-square-animation {
+
+    from {
+
+        transform: scale(0, 0);
+    }
+    to {
+
+        transform: scale(1.25, 1.25);
+    }
+}
+
+#animated-border-bottom-left-x {
+
+    position: absolute;
+    width: 1rem;
+    height: 0.5rem;
+    bottom: 3rem;
+    left: 1rem;
+    margin: 0;
+    padding: 0;
+    background-color: #4e4640;
+    transform-origin: left;
+    animation: animated-border-bottom-left-x-animation 0.5s linear forwards;
+    z-index: 2;
+}
+
+@keyframes animated-border-bottom-left-x-animation {
+
+    from {
+
+        transform: scaleX(0);
+    }
+    to {
+
+        transform: scaleX(6);
+    }
+}
+
+#animated-border-bottom-left-y {
+
+    position: absolute;
+    width: 0.5rem;
+    height: 1rem;
+    bottom: 3rem;
+    left: 1rem;
+    margin: 0;
+    padding: 0;
+    background-color: #4e4640;
+    transform-origin: bottom;
+    animation: animated-border-bottom-left-y-animation 0.5s linear forwards;
+    z-index: 2;
+}
+
+@keyframes animated-border-bottom-left-y-animation {
+
+    from {
+
+        transform: scaleY(0);
+    }
+    to {
+
+        transform: scaleY(3);
+    }
+}
+
+#animated-border-bottom-left-square {
+
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    bottom: 3rem;
+    left: 1rem;
+    margin: 0;
+    padding: 0;
+    background-color: #4e4640;
+    transform-origin: bottom left;
+    animation: animated-border-bottom-left-square-animation 0.5s linear forwards;
+    z-index: 2;
+}
+
+@keyframes animated-border-bottom-left-square-animation {
+
+    from {
+
+        transform: scale(0, 0);
+    }
+    to {
+
+        transform: scale(1.5, 1.5);
+    }
+}
+
+#animated-border-top-right-x {
+
+    position: absolute;
+    width: 1rem;
+    height: 0.5rem;
+    top: 3rem;
+    right: 1rem;
+    margin: 0;
+    padding: 0;
+    background-color: #4e4640;
+    transform-origin: right;
+    animation: animated-border-top-right-x-animation 0.5s linear forwards;
+    z-index: 2;
+}
+
+@keyframes animated-border-top-right-x-animation {
+
+    from {
+
+        transform: scaleX(0);
+    }
+    to {
+
+        transform: scaleX(6);
+    }
+}
+
+#animated-border-top-right-y {
+
+    position: absolute;
+    width: 0.5rem;
+    height: 1rem;
+    top: 3rem;
+    right: 1rem;
+    margin: 0;
+    padding: 0;
+    background-color: #4e4640;
+    transform-origin: top;
+    animation: animated-border-top-right-y-animation 0.5s linear forwards;
+    z-index: 2;
+}
+
+@keyframes animated-border-top-right-y-animation {
+
+    from {
+
+        transform: scaleY(0);
+    }
+    to {
+
+        transform: scaleY(4.5);
+    }
+}
+
+#animated-border-top-right-square {
+
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    top: 3rem;
+    right: 1rem;
+    margin: 0;
+    padding: 0;
+    background-color: #4e4640;
+    transform-origin: top right;
+    animation: animated-border-top-right-square-animation 0.5s linear forwards;
+    z-index: 2;
+}
+
+@keyframes animated-border-top-right-square-animation {
+
+    from {
+
+        transform: scale(0, 0);
+    }
+    to {
+
+        transform: scale(1.35, 1.35);
+    }
+}
+
+#animated-border-bottom-right-x {
+
+    position: absolute;
+    width: 1rem;
+    height: 0.5rem;
+    bottom: 3rem;
+    right: 1rem;
+    margin: 0;
+    padding: 0;
+    background-color: #4e4640;
+    transform-origin: right;
+    animation: animated-border-bottom-right-x-animation 0.5s linear forwards;
+    z-index: 2;
+}
+
+@keyframes animated-border-bottom-right-x-animation {
+
+    from {
+
+        transform: scaleX(0);
+    }
+    to {
+
+        transform: scaleX(3);
+    }
+}
+
+#animated-border-bottom-right-y {
+
+    position: absolute;
+    width: 0.5rem;
+    height: 1rem;
+    bottom: 3rem;
+    right: 1rem;
+    margin: 0;
+    padding: 0;
+    background-color: #4e4640;
+    transform-origin: bottom;
+    animation: animated-border-bottom-right-y-animation 0.5s linear forwards;
+    z-index: 2;
+}
+
+@keyframes animated-border-bottom-right-y-animation {
+
+    from {
+
+        transform: scaleY(0);
+    }
+    to {
+
+        transform: scaleY(5);
+    }
+}
+
+#animated-border-bottom-right-square {
+
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    bottom: 3rem;
+    right: 1rem;
+    margin: 0;
+    padding: 0;
+    background-color: #4e4640;
+    transform-origin: bottom right;
+    animation: animated-border-bottom-right-square-animation 0.5s linear forwards;
+    z-index: 2;
+}
+
+@keyframes animated-border-bottom-right-square-animation {
+
+    from {
+
+        transform: scale(0, 0);
+    }
+    to {
+
+        transform: scale(2, 2);
+    }
+}
+
+#animated-border-bottom-left-tree-2 {
+
+    position: absolute;
+    width: 8%;
+    height: 70%;
+    bottom: -3%;
+    left: 47%;
+    margin: 0;
+    padding: 0;
+    background-image: url("./Assets/Tree\ 2.png");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform-origin: bottom center;
+    transform: translate(-50%, 0%) translateY(100%) translateX(0%);
+    animation: animated-border-bottom-left-tree-2-animation 1.5s linear forwards;
+    animation-delay: 1s;
+    z-index: 2;
+}
+
+@keyframes animated-border-bottom-left-tree-2-animation {
+
+    0% {
+
+        transform: translate(-50%, 0%) translateY(100%) translateX(0%);
+    }
+    50% {
+
+        transform: translate(-50%, 0%) translateY(0%) translateX(0%);
+    }
+    100% {
+
+        transform: translate(-50%, 0%) translateY(0%) translateX(var(--translating-factor));
+    }
+}
+
+#animated-border-bottom-right-tree-1 {
+
+    position: absolute;
+    width: 8%;
+    height: 80%;
+    bottom: -3%;
+    right: 47%;
+    margin: 0;
+    padding: 0;
+    background-image: url("./Assets/Tree\ 1.png");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform-origin: bottom center;
+    transform: translate(50%, 0%) translateY(100%) translateX(0%);
+    animation: animated-border-bottom-right-tree-1-animation 1.5s linear forwards;
+    animation-delay: 1s;
+    z-index: 2;
+}
+
+@keyframes animated-border-bottom-right-tree-1-animation {
+
+    0% {
+
+        transform: translate(50%, 0%) translateY(100%) translateX(0%);
+    }
+    50% {
+
+        transform: translate(50%, 0%) translateY(0%) translateX(0%);
+    }
+    100% {
+
+        transform: translate(50%, 0%) translateY(0%) translateX(calc(var(--translating-factor) * -1));
+    }
+}
+
+#animated-compass-rose-1 {
+
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    top: 50%;
+    left: 50%;
+    margin: 0;
+    padding: 0;
+    transform: translate(-50%, -50%) translateY(-150%);
+    background-image: url("./Assets/Compass\ Rose\ 1.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    animation: animated-compass-rose-1-animation 3s linear forwards;
+    animation-delay: 3s;
+    z-index: 2;
+}
+
+@keyframes animated-compass-rose-1-animation {
+
+    to {
+
+        opacity: 1;
+    }
+}
+
+#animated-compass-rose-2 {
+
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    top: 50%;
+    left: 50%;
+    margin: 0;
+    padding: 0;
+    transform: translate(-50%, -50%);
+    transform-origin: center center;
+    background-image: url("./Assets/Compass\ Rose\ 2.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    animation: animated-compass-rose-2-animation-1 3s linear forwards, animated-compass-rose-2-animation-2 60s infinite alternate;
+    animation-delay: 3s;
+    z-index: 2;
+}
+
+@keyframes animated-compass-rose-2-animation-1 {
+
+    to {
+
+        opacity: 1;
+    }
+}
+
+@keyframes animated-compass-rose-2-animation-2 {
+
+    0% {
+
+        transform: translate(-50%, -51%) rotate(0deg);
+    }
+    50% {
+
+        transform: translate(-49%, -51%) rotate(240deg);
+    }
+    100% {
+
+        transform: translate(-50%, -50%) rotate(50deg);
+    }
+}
+
+#animated-map {
+
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 65%;
+    bottom: 0%;
+    left: 50%;
+    margin: 0;
+    padding: 0;
+    background-image: url("./Assets/Map.png");
+    background-size: 0% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform-origin: bottom center;
+    transform: translate(-50%, 0%) translateY(100%);
+    animation: animated-map-animation 1.6s linear forwards;
+    animation-delay: 1s;
+    z-index: 2;
+}
+
+@keyframes animated-map-animation {
+
+    0% {
+
+        transform: translate(-50%, 0%) translateY(100%);
+        background-size: 0% 100%;
+    }
+    50% {
+
+        transform: translate(-50%, 0%) translateY(-5%);
+        background-size: 0% 100%;
+    }
+    100% {
+
+        transform: translate(-50%, 0%) translateY(-5%);
+        background-size: 100% 100%;
+    }
+}
+
+#animated-map-container {
+
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    width: 80%;
+    height: 80%;
+    top: 50%;
+    left: 50%;
+    margin: 0;
+    padding: 0;
+    transform: translate(-50%, -50%);
+    visibility: hidden;
+    animation: animated-map-container-animation 2s linear forwards;
+    animation-delay: 2.5s;
+    overflow: auto;
+    z-index: 2;
+}
+
+@keyframes animated-map-container-animation {
+
+    to {
+
+        visibility: visible;
+    }
+}
+
+#animated-map-container > button {
+
+    flex-shrink: 0;
+    margin-right: 30%;
+    width: 45%;
+    height: 50%;
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    z-index: 2;
+}
+
+#animated-map-container > button:nth-child(even) {
+
+    margin-right: 0%;
+    margin-left: 40%;
+}
+
+#animated-map-container > button:hover {
+
+    animation: animated-map-container-button-hover-animation 1.5s infinite;
+}
+
+@keyframes animated-map-container-button-hover-animation {
+
+    0% {
+
+        transform: scale(1);
+        filter: brightness(1);
+    }
+    50% {
+
+        transform: scale(1.05);
+        filter: brightness(2);
+    }
+    100% {
+
+        transform: scale(1);
+        filter: brightness(1);
+    }
+}
+
+#projects {
+
+    background-image: url("./Assets/Map\ Button\ Projects.png");
+}
+
+#main-techs {
+
+    background-image: url("./Assets/Map\ Button\ Main\ Techs.png");
+}
+
+#contact {
+
+    background-image: url("./Assets/Map\ Button\ Contact.png");
+}
+
+#about-me {
+
+    background-image: url("./Assets/Map\ Button\ About\ Me.png");
+}
+
+.animated-map-container-content {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80%;
+    height: 80%;
+    margin: 2rem;
+    gap: 1rem;
+    background-image: url("./Assets/Container\ 1.png");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 2;
+}
+
+.animated-map-container-content button {
+
+    position: fixed;
+    align-self: flex-start;
+    width: 30%;
+    height: 15%;
+}
+
+.animated-map-container-content h2 {
+
+    padding: 3rem 2rem 0rem 2rem;
+    color: #615953;
+}
+
+.animated-map-container-content p {
+
+    padding: 1rem 2rem 1rem 2rem;
+    color: #4e4640;
+}
+
+.animated-map-container-content img {
+
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    width: auto;
+    height: auto;
+    padding: 1rem 2rem 1rem 2rem;
+    object-fit: contain;
+}
+
+#animated-map-container-content-back-button {
+
+    background-image: url("./Assets/Back\ Button.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    z-index: 2;
+}
+
+#animated-map-container-content-back-button:hover {
+
+    animation: animated-map-container-content-back-button-hover-animation 1.5s ease-in-out;
+}
+
+@keyframes animated-map-container-content-back-button-hover-animation {
+
+    0% {
+
+        transform: rotate(0deg);
+    }
+    100% {
+
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+
+
+
+
+/*
+
+Animation Page 4
+
+*/
+
+
+
+
+
+
+
+
+.animated-left-wheat {
+
+    position: absolute;
+    width: 5rem;
+    height: 10rem;
+    top: 0rem;
+    left: 0rem;
+    margin: 0rem;
+    padding: 0rem;
+    background-image: url("./Assets/Wheat\ 1.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.animated-left-wheat-animation-beginning {
+
+    animation: animated-left-wheat-animation-beginning 1s linear forwards;
+}
+
+.animated-left-wheat-animation-ending {
+
+    animation: animated-left-wheat-animation-ending 1s linear forwards;
+}
+
+@keyframes animated-left-wheat-animation-beginning {
+
+    from {
+
+        opacity: 1;
+    }
+    to {
+
+        opacity: 1;
+    }
+}
+
+@keyframes animated-left-wheat-animation-ending {
+
+    from {
+
+        opacity: 1;
+    }
+    to {
+
+        opacity: 1;
+    }
+}
+
+.animated-right-wheat {
+
+    position: absolute;
+    width: 5rem;
+    height: 10rem;
+    top: 0rem;
+    left: 0rem;
+    margin: 0rem;
+    padding: 0rem;
+    background-image: url("./Assets/Wheat\ 2.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.animated-right-wheat-animation-beginning {
+
+    animation: animated-right-wheat-animation-beginning 1s linear forwards;
+}
+
+.animated-right-wheat-animation-ending {
+
+    animation: animated-right-wheat-animation-ending 1s linear forwards;
+}
+
+@keyframes animated-right-wheat-animation-beginning {
+
+    from {
+
+        opacity: 1;
+    }
+    to {
+
+        opacity: 1;
+    }
+}
+
+@keyframes animated-right-wheat-animation-ending {
+
+    from {
+
+        opacity: 1;
+    }
+    to {
+
+        opacity: 1;
+    }
+}
+
+.animated-cloud {
+
+    position: absolute;
+    width: 10rem;
+    height: 10rem;
+    top: 0rem;
+    left: 0rem;
+    margin: 0rem;
+    padding: 0rem;
+    background-image: url("./Assets/Cloud.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.animated-cloud-animation-beginning {
+
+    animation: animated-cloud-animation-beginning 1s linear forwards;
+}
+
+.animated-cloud-animation-ending {
+
+    animation: animated-cloud-animation-ending 1s linear forwards;
+}
+
+@keyframes animated-cloud-animation-beginning {
+
+    from {
+
+        opacity: 1;
+    }
+    to {
+
+        opacity: 1;
+    }
+}
+
+@keyframes animated-cloud-animation-ending {
+
+    from {
+
+        opacity: 1;
+    }
+    to {
+
+        opacity: 1;
+    }
+}
+
+.animated-butterfly-1 {
+
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    top: 0rem;
+    left: 0rem;
+    margin: 0rem;
+    padding: 0rem;
+    background-image: url("./Assets/Butterfly\ 1.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.animated-butterfly-1-animation-beginning {
+
+    animation: animated-butterfly-1-animation-beginning 1s ease-in-out infinite;
+}
+
+.animated-butterfly-1-animation-ending {
+
+    animation: animated-butterfly-1-animation-ending 1s ease-in-out infinite;
+}
+
+@keyframes animated-butterfly-1-animation-beginning {
+
+    from {
+
+        background-size: 0% 100%;
+        opacity: 1;
+    }
+    to {
+
+        background-size: 100% 100%;
+        opacity: 1;
+    }
+}
+
+@keyframes animated-butterfly-1-animation-ending {
+
+    from {
+
+        background-size: 0% 100%;
+        filter: brightness(1);
+    }
+    to {
+
+        background-size: 100% 100%;
+        filter: brightness(1.2);
+    }
+}
+
+.animated-butterfly-2 {
+
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    top: 0rem;
+    left: 0rem;
+    margin: 0rem;
+    padding: 0rem;
+    background-image: url("./Assets/Butterfly\ 2.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.animated-butterfly-2-animation-beginning {
+
+    animation: animated-butterfly-2-animation-beginning 1s ease-in-out infinite;
+}
+
+.animated-butterfly-2-animation-ending {
+
+    animation: animated-butterfly-2-animation-ending 1s ease-in-out infinite;
+}
+
+@keyframes animated-butterfly-2-animation-beginning {
+
+    from {
+
+        background-size: 0% 100%;
+        opacity: 1;
+    }
+    to {
+
+        background-size: 100% 100%;
+        opacity: 1;
+    }
+}
+
+@keyframes animated-butterfly-2-animation-ending {
+
+    from {
+
+        background-size: 0% 100%;
+        filter: brightness(1);
+    }
+    to {
+
+        background-size: 100% 100%;
+        filter: brightness(1.2);
+    }
+}
+
+.animated-flying-bird {
+
+    position: absolute;
+    width: 4rem;
+    height: 4rem;
+    top: 0rem;
+    left: 0rem;
+    margin: 0rem;
+    padding: 0rem;
+    background-image: url("./Assets/Flying\ Bird.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.animated-flying-bird-animation-beginning {
+
+    animation: animated-flying-bird-animation-beginning 1s linear forwards;
+}
+
+.animated-flying-bird-animation-ending {
+
+    animation: animated-flying-bird-animation-ending 1s linear forwards;
+}
+
+@keyframes animated-flying-bird-animation-beginning {
+
+    from {
+
+        opacity: 0;
+    }
+    to {
+
+        opacity: 1;
+    }
+}
+
+@keyframes animated-flying-bird-animation-ending {
+
+    from {
+
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+
+        opacity: 0;
+        transform: scale(0.5);
+    }
+}
+
+.animated-shooting-star {
+
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    top: 0rem;
+    left: 0rem;
+    margin: 0rem;
+    padding: 0rem;
+    background-image: url("./Assets/Star\ 1.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.animated-shooting-star-animation-beginning {
+
+    animation: animated-shooting-star-animation-beginning 8s linear forwards;
+}
+
+.animated-shooting-star-animation-ending {
+
+    animation: animated-shooting-star-animation-ending 1s linear forwards;
+}
+
+@keyframes animated-shooting-star-animation-beginning {
+
+    from {
+
+        opacity: 0;
+    }
+    to {
+
+        opacity: 1;
+    }
+}
+
+@keyframes animated-shooting-star-animation-ending {
+
+    from {
+
+        filter: brightness(1);
+    }
+    to {
+
+        filter: brightness(1000);
+    }
+}
+
+.animated-star-1 {
+
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    top: 0rem;
+    left: 0rem;
+    margin: 0rem;
+    padding: 0rem;
+    background-image: url("./Assets/Star\ 1.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.animated-star-1-animation-beginning {
+
+    animation: animated-star-1-animation-beginning 8s linear forwards;
+}
+
+.animated-star-1-animation-ending {
+
+    animation: animated-star-1-animation-ending 1s linear forwards;
+}
+
+@keyframes animated-star-1-animation-beginning {
+
+    from {
+
+        opacity: 0;
+    }
+    to {
+
+        opacity: 1;
+    }
+}
+
+@keyframes animated-star-1-animation-ending {
+
+    from {
+
+        opacity: 1;
+        transform: scale(1);
+        filter: brightness(1);
+    }
+    to {
+
+        opacity: 0;
+        transform: scale(1.1);
+        filter: brightness(3);
+    }
+}
+
+.animated-star-2 {
+
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    top: 0rem;
+    left: 0rem;
+    margin: 0rem;
+    padding: 0rem;
+    background-image: url("./Assets/Star\ 2.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.animated-star-2-animation-beginning {
+
+    animation: animated-star-2-animation-beginning 8s linear forwards;
+}
+
+.animated-star-2-animation-ending {
+
+    animation: animated-star-2-animation-ending 1s linear forwards;
+}
+
+@keyframes animated-star-2-animation-beginning {
+
+    from {
+
+        opacity: 0;
+    }
+    to {
+
+        opacity: 1;
+    }
+}
+
+@keyframes animated-star-2-animation-ending {
+
+    from {
+
+        opacity: 1;
+        transform: scale(1);
+        filter: brightness(1);
+    }
+    to {
+
+        opacity: 0;
+        transform: scale(1.2);
+        filter: brightness(4);
+    }
+}
+
+.animated-pink-petal {
+
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    top: 0rem;
+    left: 0rem;
+    margin: 0rem;
+    padding: 0rem;
+    background-image: url("./Assets/Pink Petals.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.animated-pink-petal-animation-beginning {
+
+    animation: animated-pink-petal-animation-beginning 7s linear forwards;
+}
+
+.animated-pink-petal-animation-ending {
+
+    animation: animated-pink-petal-animation-ending 1s linear forwards;
+}
+
+@keyframes animated-pink-petal-animation-beginning {
+
+    from {
+
+        opacity: 0;
+    }
+    to {
+
+        opacity: 1;
+    }
+}
+
+@keyframes animated-pink-petal-animation-ending {
+
+    from {
+
+        opacity: 1;
+    }
+    to {
+
+        opacity: 0;
+    }
+}
+
+.animated-blue-petal {
+
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    top: 0rem;
+    left: 0rem;
+    margin: 0rem;
+    padding: 0rem;
+    background-image: url("./Assets/Blue\ Petals.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.animated-blue-petal-animation-beginning {
+
+    animation: animated-blue-petal-animation-beginning 8s linear forwards;
+}
+
+.animated-blue-petal-animation-ending {
+
+    animation: animated-blue-petal-animation-ending 1s linear forwards;
+}
+
+@keyframes animated-blue-petal-animation-beginning {
+
+    from {
+
+        opacity: 0;
+    }
+    to {
+
+        opacity: 1;
+    }
+}
+
+@keyframes animated-blue-petal-animation-ending {
+
+    from {
+
+        opacity: 1;
+    }
+    to {
+
+        opacity: 0;
+    }
+}
+
+.animated-green-petal {
+
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    top: 0rem;
+    left: 0rem;
+    margin: 0rem;
+    padding: 0rem;
+    background-image: url("./Assets/Green Petals.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.animated-green-petal-animation-beginning {
+
+    animation: animated-green-petal-animation-beginning 8s linear forwards;
+}
+
+.animated-green-petal-animation-ending {
+
+    animation: animated-green-petal-animation-ending 1s linear forwards;
+}
+
+@keyframes animated-green-petal-animation-beginning {
+
+    from {
+
+        opacity: 0;
+    }
+    to {
+
+        opacity: 1;
+    }
+}
+
+@keyframes animated-green-petal-animation-ending {
+
+    from {
+
+        opacity: 1;
+    }
+    to {
+
+        opacity: 0;
+    }
+}
+
+.animated-0-bit {
+
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    top: 0rem;
+    left: 0rem;
+    margin: 0rem;
+    padding: 0rem;
+    background-image: url("./Assets/0_bit.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.animated-0-bit-animation-beginning {
+
+    animation: animated-0-bit-animation-beginning 1s linear forwards;
+}
+
+.animated-0-bit-animation-ending {
+
+    animation: animated-0-bit-animation-ending 1s linear forwards;
+}
+
+@keyframes animated-0-bit-animation-beginning {
+
+    from {
+
+        opacity: 0;
+    }
+    to {
+
+        opacity: 1;
+    }
+}
+
+@keyframes animated-0-bit-animation-ending {
+
+    from {
+
+        opacity: 1;
+    }
+    to {
+
+        opacity: 0;
+    }
+}
+
+.animated-1-bit {
+
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    top: 0rem;
+    left: 0rem;
+    margin: 0rem;
+    padding: 0rem;
+    background-image: url("./Assets/1_bit.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.animated-1-bit-animation-beginning {
+
+    animation: animated-1-bit-animation-beginning 3s linear forwards;
+}
+
+.animated-1-bit-animation-ending {
+
+    animation: animated-1-bit-animation-ending 1s linear forwards;
+}
+
+@keyframes animated-1-bit-animation-beginning {
+
+    from {
+
+        opacity: 0;
+    }
+    to {
+
+        opacity: 1;
+    }
+}
+
+@keyframes animated-1-bit-animation-ending {
+
+    from {
+
+        opacity: 1;
+    }
+    to {
+
+        opacity: 0;
+    }
+}
+
+.animated-c-letter {
+
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    top: 0rem;
+    left: 0rem;
+    margin: 0rem;
+    padding: 0rem;
+    background-image: url("./Assets/c_letter.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.animated-c-letter-animation-beginning {
+
+    animation: animated-c-letter-animation-beginning 1s linear forwards;
+}
+
+.animated-c-letter-animation-ending {
+
+    animation: animated-c-letter-animation-ending 1s linear forwards;
+}
+
+@keyframes animated-c-letter-animation-beginning {
+
+    from {
+
+        opacity: 1;
+    }
+    to {
+
+        opacity: 1;
+    }
+}
+
+@keyframes animated-c-letter-animation-ending {
+
+    from {
+
+        opacity: 1;
+    }
+    to {
+
+        opacity: 1;
+    }
+}
+
+.animated-plus-symbol {
+
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    top: 0rem;
+    left: 0rem;
+    margin: 0rem;
+    padding: 0rem;
+    background-image: url("./Assets/plus_symbol.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.animated-plus-symbol-animation-beginning {
+
+    animation: animated-plus-symbol-animation-beginning 1s linear forwards;
+}
+
+.animated-plus-symbol-animation-ending {
+
+    animation: animated-plus-symbol-animation-ending 1s linear forwards;
+}
+
+@keyframes animated-plus-symbol-animation-beginning {
+
+    from {
+
+        opacity: 1;
+    }
+    to {
+
+        opacity: 1;
+    }
+}
+
+@keyframes animated-plus-symbol-animation-ending {
+
+    from {
+
+        opacity: 1;
+    }
+    to {
+
+        opacity: 1;
+    }
+}
+
+.animated-react-logo {
+
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    top: 0rem;
+    left: 0rem;
+    margin: 0rem;
+    padding: 0rem;
+    background-image: url("./Assets/React\ Logo.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.animated-react-logo-animation-beginning {
+
+    animation: animated-react-logo-animation-beginning 1s linear forwards;
+}
+
+.animated-react-logo-animation-ending {
+
+    animation: animated-react-logo-animation-ending 1s linear forwards;
+}
+
+@keyframes animated-react-logo-animation-beginning {
+
+    from {
+
+        opacity: 1;
+    }
+    to {
+
+        opacity: 1;
+    }
+}
+
+@keyframes animated-react-logo-animation-ending {
+
+    from {
+
+        opacity: 1;
+    }
+    to {
+
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+
+
+/* Mode Responsive */
+
+
+
+
+
+
+
+
+@media (max-width: 500px) {
+
+    :root {
+
+        --translating-factor: -350%;
+    }
+
+    html {
+
+        font-size: 14px;
+    }
+
+    #legal-mention {
+
+        width: 30%;
+        left: 10%;
+    }
+
+    #animated-border-bottom-left-tree-2 {
+
+        width: 10%;
+    }
+
+    #animated-border-bottom-right-tree-1 {
+
+        width: 10%;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 1919px) {
+
+    :root {
+
+        --translating-factor: -350%;
+    }
+    
+    html {
+
+        font-size: 14px;
+    }
+
+    #legal-mention {
+
+        width: 30%;
+        left: 10%;
+    }
+
+    #animated-border-bottom-left-tree-2 {
+
+        width: 10%;
+    }
+
+    #animated-border-bottom-right-tree-1 {
+
+        width: 10%;
+    }
+}
